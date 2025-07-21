@@ -1,0 +1,13 @@
+[project]
+name = "pgn_quizzer"
+version = "0.1.0"
+description = "A lightweight offline tool that turns a collection of annotated chess games into an interactive quiz."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pytest>=8.4.1",
+    "pytest-cov>=6.2.1",
+    "python-chess>=1.999",
+]
+[tool.pytest.ini_options]
+    pythonpath = ["."]
