@@ -105,9 +105,9 @@ You are free to:
 Under the following terms:
 - **Attribution**: You must give appropriate credit and indicate if changes were made.
 - **NonCommercial**: You may not use the material for commercial purposes, including but not limited to:
--- Hosting this software as part of a paid or ad-supported service.
--- Integrating it into subscription-based or monetized platforms.
--- Redistributing modified versions for commercial gain.
+  - Hosting this software as part of a paid or ad-supported service.
+  - Integrating it into subscription-based or monetized platforms.
+  - Redistributing modified versions for commercial gain.
 
 If you are unsure whether your use case qualifies as "non-commercial", you can read the license summary or review the full legal text.
 
