@@ -1,11 +1,10 @@
 # PGNQuizzer
 
-![Python](https://img.shields.io/badge/Python-3.12+-blue?logo=python)
-<!--
-![License](https://img.shields.io/github/license/will-reynolds-maths/pgn-quizzer)
 ![Last Commit](https://img.shields.io/github/last-commit/will-reynolds-maths/pgn-quizzer)
-![Open Issues](https://img.shields.io/github/issues/will-reynolds-maths/pgn-quizzer)
+![Python](https://img.shields.io/badge/Python-3.12+-blue?logo=python)
 ![Repo Size](https://img.shields.io/github/repo-size/will-reynolds-maths/pgn-quizzer)
+<!--![License](https://img.shields.io/github/license/will-reynolds-maths/pgn-quizzer)
+![Open Issues](https://img.shields.io/github/issues/will-reynolds-maths/pgn-quizzer)
 ![Build](https://img.shields.io/github/actions/workflow/status/will-reynolds-maths/pgn-quizzer/python-app.yml) 
 -->
 
