@@ -1,13 +1,15 @@
 # PGNQuizzer
 
 ![Python](https://img.shields.io/badge/Python-3.12+-blue?logo=python)
+<!--
 ![License](https://img.shields.io/github/license/will-reynolds-maths/pgn-quizzer)
 ![Last Commit](https://img.shields.io/github/last-commit/will-reynolds-maths/pgn-quizzer)
 ![Open Issues](https://img.shields.io/github/issues/will-reynolds-maths/pgn-quizzer)
 ![Repo Size](https://img.shields.io/github/repo-size/will-reynolds-maths/pgn-quizzer)
-<!-- ![Build](https://img.shields.io/github/actions/workflow/status/will-reynolds-maths/pgn-quizzer/python-app.yml) -->
+![Build](https://img.shields.io/github/actions/workflow/status/will-reynolds-maths/pgn-quizzer/python-app.yml) 
+-->
 
-PGNQuizzer is a a lightweight, offline tool that turns a collection of annotated chess games into an interactive quiz, aiming to help chess players strengthen their game recall and deepen their positional understanding.
+PGNQuizzer is a a lightweight offline tool that turns a collection of annotated chess games into an interactive quiz, aiming to help chess players strengthen their game recall and deepen their positional understanding.
 
 ## Installation
 
