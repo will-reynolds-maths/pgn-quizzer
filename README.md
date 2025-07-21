@@ -17,7 +17,7 @@ Clone the repo:
 
 ```bash
 git clone https://github.com/will-reynolds-maths/pgn-quizzer.git
-cd PGNQuizzer
+cd pgn_quizzer
 ```
 
 Make sure your Python version matches the project's requirements (check `pyproject.toml` for details).
@@ -34,6 +34,7 @@ This app:
 - requires Python to be installed,
 - currently only accepts JSON source,
 - only runs as a console (command-line) interface.
+
 You can choose the number of quiz questions (between 1 and 100).
 
 ## Usage
@@ -116,4 +117,4 @@ This license **explicitly prohibits commercial use**, including use in freemium,
 
 ## Credits / Acknowledgements
 
-Quiz inspired by Angela Yu's "100 Days of Python" course.
+Quiz structure inspired by Angela Yu's "100 Days of Python" course.
