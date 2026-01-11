@@ -1,5 +1,5 @@
 import pytest
-from pgn_quizzer.quiz_src.view import run_quiz_console
+from pgn_quizzer.view import run_quiz_console
 
 pytestmark =  pytest.mark.parametrize("sample_console_presenter",
                                       ["doublet"],

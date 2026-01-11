@@ -85,12 +85,12 @@ class QuizBrain:
     def still_has_questions(self) -> bool:
         return self.nb_questions_answered < len(self.questions)
     
-    def multiple_choice_options(self, question: Question) -> list[str]:
+    def generate_multiple_choice_options(self, question: Question) -> list[str]:
         '''
-        Generates list of options for user to choose from.
+        Randomly generates list of options for user to choose from.
 
         Args:
-            question: 
+            question:
                 A `Question` instance, typically the next question in the quiz.
         
         Returns:

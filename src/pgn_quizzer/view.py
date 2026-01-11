@@ -1,4 +1,5 @@
-from pgn_quizzer.quiz_src.presenter import QuizPresenter
+from pgn_quizzer.presenter import QuizPresenter
+from chess import Board
 
 def run_quiz_console(presenter: QuizPresenter,
                      nb_questions: int,
@@ -37,15 +38,17 @@ def run_quiz_console(presenter: QuizPresenter,
         presenter.cue_next_question()
 
         # print question statement
-        output_func(presenter.question_statement())
+        output_func(f"Q{1 + presenter.nb_questions_answered()}: {presenter.question_statement()}")
         output_func("")
         
         # print assets
-        output_func(*presenter.question_assets(), sep="\n\n")
+        fen, *_ = presenter.question_assets()
+        position = Board(fen)
+        output_func(position.unicode(invert_color=True, orientation=position.turn), sep="\n\n")
         output_func("")
         
         # generate user answer choices
-        user_choices_dict = presenter.multiple_choice_repr()
+        user_choices_dict = presenter.current_user_choices
 
         # print user answer choices
         for k, v in user_choices_dict.items():
@@ -53,28 +56,31 @@ def run_quiz_console(presenter: QuizPresenter,
         output_func("")
         
         # prompt for user's answer
-        user_answer = input_func(f"Your answer ({", ".join(user_choices_dict)}): ")
+        user_answer_key = input_func(f"Your answer ({", ".join(user_choices_dict)}): ")
         
         # validate user input
-        while presenter.check_answer(user_answer, user_choices_dict) is None:
+        while presenter.is_correct(user_answer_key) is None:
             output_func(f"Please input one of the following options: {", ".join(user_choices_dict)}.")
-            user_answer = input_func("Your answer: ")
+            user_answer_key = input_func("Your answer: ")
 
-        result = presenter.check_answer(user_answer, user_choices_dict)
+        result = presenter.is_correct(user_answer_key)
         assert type(result) is bool # obviously true now because of the while loop
 
         # print feedback (correct/incorrect)
-        output_func(presenter.result_feedback(result))
+        if result:
+            output_func("Correct!")
+        else:
+            output_func(f"Incorrect. The correct answer was {presenter.right_answer()}.")
 
         presenter.post_question_update(result)
 
         if presenter.still_has_questions():
-            output_func(f"Your current score is: {presenter.scoreline_report()}.")
+            output_func(f"Your current score is: {presenter.user_score()}/{presenter.nb_questions_answered()}.")
             output_func("")
 
     output_func("")
     output_func("Quiz over!")
-    output_func(f"Overall, you scored {presenter.scoreline_report()}.")
+    output_func(f"Overall, you scored {presenter.user_score()}/{presenter.nb_questions_answered()}.")
     output_func("")
 
     play_again = input_func("Would you like to play again? [Y/n] ")
