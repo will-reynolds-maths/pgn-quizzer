@@ -1,8 +1,9 @@
 import pytest
+from pathlib import Path
 
 from pgn_quizzer.model import Question
 from pgn_quizzer.model import QuizBrain
-from pgn_quizzer.data import load_questions_from_json
+from pgn_quizzer.data import create_question_bank
 from _pytest.fixtures import FixtureRequest # only used for type hints
 
 def sample_quiz_empty_bank_zero_questions():
@@ -21,14 +22,14 @@ def sample_quiz_one_question():
 
 def sample_quiz_sample_json_zero_questions():
     # Create a sample quiz but with no requests for questions
-    json_path = "chess_quiz/data/chess_sample_data.json"
-    question_bank = load_questions_from_json(json_path)
+    json_path = Path("chess_quiz/data/chess_sample_data.json")
+    question_bank = create_question_bank(json_path)
     return QuizBrain(question_bank, nb_questions=0)
 
 def sample_quiz_sample_json_five_questions():
     # Create a sample five-question quiz
-    json_path = "chess_quiz/data/chess_sample_data.json"
-    question_bank = load_questions_from_json(json_path)
+    json_path = Path("chess_quiz/data/chess_sample_data.json")
+    question_bank = create_question_bank(json_path)
     return QuizBrain(question_bank, nb_questions=5)
 
 @pytest.fixture

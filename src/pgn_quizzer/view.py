@@ -1,10 +1,35 @@
 from pgn_quizzer.presenter import QuizPresenter
 from chess import Board
 
+def run_quiz_gui(presenter: QuizPresenter,
+                 nb_questions: int
+                 ) -> None:
+    """
+    Coordinator function which runs the quiz in a graphical user interface.
+
+    Prints formatted data to the screen and collects input. All checking of
+    answers, tracking of score, and data formatting is handled by the
+    presenter. The number of questions shown is controlled by `nb_questions`.
+
+    Intended to be the default user interface.
+
+    Parameters:
+        presenter (QuizPresenter): 
+            Interfaces with the model, tells the view what to display.
+        nb_questions (int):
+            The number of questions to ask in the current quiz session.
+
+    Returns:
+        bool: True if the user wants to play again, False otherwise.
+    """
+
+    raise Exception
+
 def run_quiz_console(presenter: QuizPresenter,
                      nb_questions: int,
                      input_func = input, # abstraction for testing
-                     output_func = print):
+                     output_func = print
+                     ) -> None:
     """
     Coordinator function which runs the quiz in a console (text-based) interface.
 
@@ -85,25 +110,3 @@ def run_quiz_console(presenter: QuizPresenter,
 
     play_again = input_func("Would you like to play again? [Y/n] ")
     return play_again.lower() != "n"
-
-def run_quiz_gui(presenter: QuizPresenter, nb_questions: int):
-    """
-    Coordinator function which runs the quiz in a graphical user interface.
-
-    Prints formatted data to the screen and collects input. All checking of
-    answers, tracking of score, and data formatting is handled by the
-    presenter. The number of questions shown is controlled by `nb_questions`.
-
-    Intended to be the default user interface.
-
-    Parameters:
-        presenter (QuizPresenter): 
-            Interfaces with the model, tells the view what to display.
-        nb_questions (int):
-            The number of questions to ask in the current quiz session.
-
-    Returns:
-        bool: True if the user wants to play again, False otherwise.
-    """
-
-    raise Exception

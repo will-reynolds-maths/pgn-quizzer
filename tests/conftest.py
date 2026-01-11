@@ -2,9 +2,10 @@ import pytest
 from _pytest.fixtures import FixtureRequest # only used for type hints
 
 from random import choice
+from pathlib import Path
 
 from pgn_quizzer.model import Question, QuizBrain
-from pgn_quizzer.data import load_questions_from_json
+from pgn_quizzer.data import create_question_bank
 
 from pgn_quizzer.presenter import QuizPresenter
 
@@ -40,15 +41,15 @@ def sample_presenter_two_questions():
 
 def sample_presenter_sample_json_zero_questions():
     # Create a sample quiz but with no requests for questions
-    json_path = ".\\jsons\\chess_sample_data.json"
-    question_bank = load_questions_from_json(json_path)
+    json_path = Path(".\\jsons\\chess_sample_data.json")
+    question_bank = create_question_bank(json_path)
     quiz = QuizBrain(question_bank, nb_questions=0)
     return QuizPresenter(quiz)
 
 def sample_presenter_sample_json_five_questions():
     # Create a sample five-question quiz
-    json_path = ".\\jsons\\chess_sample_data.json"
-    question_bank = load_questions_from_json(json_path)
+    json_path = Path(".\\jsons\\chess_sample_data.json")
+    question_bank = create_question_bank(json_path)
     quiz = QuizBrain(question_bank, nb_questions=5)
     sample_console_presenter = QuizPresenter(quiz)
     random_nb = choice(range(1, 5)) # randomized

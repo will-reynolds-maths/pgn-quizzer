@@ -5,6 +5,8 @@ from random import sample
 from chess import Board
 from pgn_quizzer.model import Question
 
+# pgn input -> storeable JSON -> "data" e.g. strs, lists, dicts -> questions (dataclass objs from model.py)
+
 #-------------------------
 # Chess Data Processing
 #-------------------------
@@ -61,7 +63,7 @@ class ChessGameConstructor:
             self.chessgames.append(game)
 
 
-def _sample_with_avoidance(lst: list[str], k: int, bad_val: str):
+def sample_with_avoidance(lst: list[str], k: int, bad_val: str):
     while True:
         sample_attempt = sample(lst, k)
         if bad_val not in sample_attempt:
@@ -69,7 +71,7 @@ def _sample_with_avoidance(lst: list[str], k: int, bad_val: str):
     return sample_attempt
 
 # TODO: the following function is delicately implemented and needs to be tested well
-def _generate_question_data(game: ChessGame, constructor: ChessGameConstructor, nb_options: int):
+def generate_question_data(game: ChessGame, constructor: ChessGameConstructor, nb_options: int):
     """
     TODO: write a docstring
     """
@@ -88,7 +90,7 @@ def _generate_question_data(game: ChessGame, constructor: ChessGameConstructor, 
         question_data["text"] = question_text[desc]
 
         for fen in game.fen_assets[desc]:
-            options = _sample_with_avoidance(constructor.titles, nb_options, game.title)
+            options = sample_with_avoidance(constructor.titles, nb_options, game.title)
             question_data["wrong_answers"] = options
             question_data["assets"] = fen
 
@@ -98,7 +100,7 @@ def _generate_question_data(game: ChessGame, constructor: ChessGameConstructor, 
 
 # I guess at this stage I'm including this function just in case
 # TODO: decide what you want to do with this function
-def pgn_2_json(path: str, nb_options=3) -> str:
+def pgn_to_json(path: str, nb_options=3) -> str:
     with open(path, mode="r") as pgn_text:
         pgn = str(pgn_text)
     
@@ -107,12 +109,12 @@ def pgn_2_json(path: str, nb_options=3) -> str:
     constructor.construct()
 
     for game in constructor.chessgames:
-        question_data_list = _generate_question_data(game, constructor, nb_options)
+        question_data_list = generate_question_data(game, constructor, nb_options)
         json_array_list += question_data_list
     
     return dumps(json_array_list)
 
-def load_questions_from_pgn(path: Path, nb_options=3) -> list[Question]:
+def load_data_from_pgn(path: Path, nb_options=3) -> list[dict]:
     if nb_options > 6:
         raise ValueError("More than 6 options is too many! "
                          "Choose a number of options less than 7.")
@@ -124,22 +126,21 @@ def load_questions_from_pgn(path: Path, nb_options=3) -> list[Question]:
     question_data = []
 
     for game in constructor.chessgames:
-        question_data += _generate_question_data(game, constructor, nb_options)
+        question_data += generate_question_data(game, constructor, nb_options)
     
-    return load_questions_from_data(question_data)
+    return question_data
 
 #-------------------------
 # Quiz Data Processing
 #-------------------------
 
-def _load_data_from_json(path: Path) -> list[dict]:
+def load_data_from_json(path: Path) -> list[dict]:
     '''Validated at runtime.'''
-    # hard to test!
     with open(path, mode='r') as json:
         question_data = load(json)
     return question_data
 
-def _validate_data(q: dict) -> bool:
+def validate_data(q: dict) -> bool:
     # the data must be of the correct types
     if not isinstance(q["text"], str):
         return False
@@ -166,31 +167,33 @@ def load_questions_from_data(question_data: list[dict]) -> list[Question]:
     '''Generates list of Question objects from question data; invalid data
     is ignored (skipped over).'''
 
-    valid_data = filter(_validate_data, question_data)
+    valid_data = filter(validate_data, question_data)
     return [Question(text          = q["text"],
                      right_answer  = q["right_answer"],
                      wrong_answers = q["wrong_answers"],
                      assets        = q["assets"])
                      for q in valid_data]
 
-def load_questions_from_json(path: Path) -> list[Question]:
-    '''
-    Opens file at path, parses JSON, and returns list of Question instances.
+#-------------------------
+# Create Question Bank
+#-------------------------
 
-    Invalid data - question data with no right answer, or with no wrong 
-    answers - is skipped over. Questions can have no text for the
-    question statement, and questions can have no assets to display
-    alongside the answer options and/or text.
-
-    Args:
-        path (str):
-            The path to a JSON file.
+def create_question_bank(source_path: Path) -> list[Question]:
+    file_type = source_path.suffix
+    if file_type == ".json":
+        data_loader = load_data_from_json
+    elif file_type == ".pgn":
+        data_loader = load_data_from_pgn
+    else:
+        raise SystemExit(
+            f"Error loading PGN or JSON from {source_path}"
+        )
     
-    Returns:
-        questions (list):
-            List of Question objects created using the data in the JSON.
-    '''
-
-    data = _load_data_from_json(path)
-    questions = load_questions_from_data(data)
-    return questions
+    try:
+            data = data_loader(source_path)
+    except (FileNotFoundError, ValueError) as e:
+        raise SystemExit(
+            f"--error: unable to find {file_type} at {source_path}: {e}"
+            )
+    else:
+        return load_questions_from_data(data)

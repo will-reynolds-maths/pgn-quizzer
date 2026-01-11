@@ -2,8 +2,7 @@ from argparse import ArgumentParser, ArgumentTypeError, Namespace
 from pathlib import Path
 
 # Import data‐loading and generation functions:
-from pgn_quizzer.data import load_questions_from_json
-from pgn_quizzer.data import load_questions_from_pgn # TODO
+from pgn_quizzer.data import create_question_bank
 
 # Import core quiz logic (model):
 from pgn_quizzer.model import QuizBrain
@@ -40,7 +39,7 @@ def parse_args() -> Namespace:
     parser.add_argument(
         "--path",
         type=str,
-        help="Path to JSON (if --chess_quiz json) or PGN (if --chess_quiz pgn). "
+        help="Path to JSON or PGN. "
              "If omitted: defaults to chess_sample_data.json for json; exits for pgn.",
     )
     parser.add_argument(
@@ -55,30 +54,9 @@ def parse_args() -> Namespace:
         default=5,
         help="Number of questions to ask in each quiz session (default: 5).",
     )
+
     args = parser.parse_args()
     return args
-
-def create_question_bank(source_path: Path):
-    file_type = source_path.suffix
-    if file_type == ".json":
-        try:
-            return load_questions_from_json(source_path)
-        except (FileNotFoundError, ValueError) as e:
-            raise SystemExit(
-                f"--error: loading JSON questions from {source_path}: {e}"
-                )
-
-    elif file_type == ".pgn": # args.source == "pgn" # currently this always throws an exception TODO
-        try:
-            return load_questions_from_pgn(source_path)
-        except Exception as e:
-            raise SystemExit(
-                f"Error loading PGN from {source_path}: {e}"
-            )
-    else:
-        raise SystemExit(
-            f"Error loading PGN or JSON from {source_path}"
-        )
 
 
 def main():
@@ -90,19 +68,21 @@ def main():
     question_bank = create_question_bank(source_path)
 
     # Create quiz and presenter:
-    quiz = QuizBrain(question_bank=question_bank, nb_questions=args.length)
+    length = args.length
+    quiz = QuizBrain(question_bank=question_bank, nb_questions=length)
     presenter = QuizPresenter(quiz)
 
     # Dispatch to chosen UI:
-    if args.ui == "console":
-        while run_quiz_console(presenter, args.length):
+    ui = args.ui
+    if ui == "console":
+        while run_quiz_console(presenter, length):
             # new quiz instance means new randomization, same question bank
-            quiz = QuizBrain(question_bank=question_bank, nb_questions=args.length)
+            quiz = QuizBrain(question_bank=question_bank, nb_questions=length)
             presenter = QuizPresenter(quiz)
         
     else:  # args.ui == "gui" # currently this always throws an exception TODO
         try:
-            run_quiz_gui(presenter, args.length)
+            run_quiz_gui(presenter, length)
 
         except Exception:
             raise SystemExit(
