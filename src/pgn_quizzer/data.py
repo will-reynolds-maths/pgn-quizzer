@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+from pathlib import Path
 from json import dumps, load
 from random import sample
 from chess import Board
@@ -111,7 +112,7 @@ def pgn_2_json(path: str, nb_options=3) -> str:
     
     return dumps(json_array_list)
 
-def load_questions_from_pgn(path: str, nb_options=3) -> list[Question]:
+def load_questions_from_pgn(path: Path, nb_options=3) -> list[Question]:
     if nb_options > 6:
         raise ValueError("More than 6 options is too many! "
                          "Choose a number of options less than 7.")
@@ -131,7 +132,7 @@ def load_questions_from_pgn(path: str, nb_options=3) -> list[Question]:
 # Quiz Data Processing
 #-------------------------
 
-def _load_data_from_json(path: str) -> list[dict]:
+def _load_data_from_json(path: Path) -> list[dict]:
     '''Validated at runtime.'''
     # hard to test!
     with open(path, mode='r') as json:
@@ -172,7 +173,7 @@ def load_questions_from_data(question_data: list[dict]) -> list[Question]:
                      assets        = q["assets"])
                      for q in valid_data]
 
-def load_questions_from_json(path: str) -> list[Question]:
+def load_questions_from_json(path: Path) -> list[Question]:
     '''
     Opens file at path, parses JSON, and returns list of Question instances.
 
