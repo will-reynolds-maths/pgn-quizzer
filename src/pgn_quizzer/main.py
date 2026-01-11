@@ -2,17 +2,20 @@ import argparse
 import sys
 
 # Import data‐loading and generation functions:
-from pgn_quizzer.quiz_src.data import load_questions_from_json
-from pgn_quizzer.chess_src.data import load_questions_from_pgn # TODO
+from pgn_quizzer.data import load_questions_from_json
+from pgn_quizzer.data import load_questions_from_pgn # TODO
 
 # Import core quiz logic (model):
-from pgn_quizzer.quiz_src.model import QuizBrain
+from pgn_quizzer.model import QuizBrain
 
 # Import domain presentation logic (presenter):
-from pgn_quizzer.chess_src.presenter import ChessConsolePresenter, ChessGUIPresenter # TODO
+from pgn_quizzer.presenter import QuizPresenter
 
 # Import UI entry points (view):
-from pgn_quizzer.quiz_src.view import run_quiz_console, run_quiz_gui # TODO
+from pgn_quizzer.view import run_quiz_console, run_quiz_gui # TODO
+
+# TODO: replace with pathlib
+SAMPLE_PATH = ".\\jsons\\chess_sample_data.json"
 
 def int_in_range(value: str) -> int:
     try:
@@ -63,7 +66,7 @@ def parse_args() -> argparse.Namespace:
 def main_function(args: argparse.Namespace):
     # Load or generate the questions list:
     if args.source == "json":
-        json_path = args.path or "pgn_quizzer/chess_src/chess_sample_data.json"
+        json_path = args.path or SAMPLE_PATH
         try:
             question_bank = load_questions_from_json(json_path)
         except (FileNotFoundError, ValueError) as e:
@@ -86,16 +89,16 @@ def main_function(args: argparse.Namespace):
     # Dispatch to chosen UI:
     if args.ui == "console":
         # Create ConsolePresenter instance:
-        presenter = ChessConsolePresenter(quiz)
+        presenter = QuizPresenter(quiz)
 
         while run_quiz_console(presenter, args.num):
             quiz = QuizBrain(question_bank, nb_questions=args.num) # new instance means new randomization
                                                                    # same question bank
-            presenter = ChessConsolePresenter(quiz)
+            presenter = QuizPresenter(quiz)
     else:  # args.ui == "gui" # currently this always throws an exception TODO
         try:
             # Create ConsolePresenter instance:
-            presenter = ChessGUIPresenter(quiz)
+            presenter = QuizPresenter(quiz)
             
             run_quiz_gui(presenter, args.num)
         except Exception:

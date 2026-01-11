@@ -1,7 +1,7 @@
 import pytest
-import pgn_quizzer.quiz_src.data as loader
+import pgn_quizzer.data as loader
 
-from pgn_quizzer.quiz_src.model import Question
+from pgn_quizzer.model import Question
 
 @pytest.fixture
 def sample_question() -> Question:

@@ -1,8 +1,8 @@
 import pytest
 
-from pgn_quizzer.quiz_src.model import Question
-from pgn_quizzer.quiz_src.model import QuizBrain
-from pgn_quizzer.quiz_src.data import load_questions_from_json
+from pgn_quizzer.model import Question
+from pgn_quizzer.model import QuizBrain
+from pgn_quizzer.data import load_questions_from_json
 from _pytest.fixtures import FixtureRequest # only used for type hints
 
 def sample_quiz_empty_bank_zero_questions():
