@@ -8,29 +8,29 @@ from _pytest.fixtures import FixtureRequest # only used for type hints
 
 def sample_quiz_empty_bank_zero_questions():
     # Create a no-question quiz
-    return QuizBrain([], nb_questions=0)
+    return QuizBrain([], length=0)
 
 def sample_quiz_empty_bank_one_question():
     # Create a quiz with no questions but a request for one
-    return QuizBrain([], nb_questions=1)
+    return QuizBrain([], length=1)
 
 def sample_quiz_one_question():
     # Create a single‐question quiz with a known FEN
     fen = "8/8/8/8/8/8/8/8 w - - 0 1"
     q = Question("Dummy Q", "A", ["B","C","D"], [fen])
-    return QuizBrain([q], nb_questions=1)
+    return QuizBrain([q], length=1)
 
 def sample_quiz_sample_json_zero_questions():
     # Create a sample quiz but with no requests for questions
     json_path = Path("chess_quiz/data/chess_sample_data.json")
     question_bank = create_question_bank(json_path)
-    return QuizBrain(question_bank, nb_questions=0)
+    return QuizBrain(question_bank, length=0)
 
 def sample_quiz_sample_json_five_questions():
     # Create a sample five-question quiz
     json_path = Path("chess_quiz/data/chess_sample_data.json")
     question_bank = create_question_bank(json_path)
-    return QuizBrain(question_bank, nb_questions=5)
+    return QuizBrain(question_bank, length=5)
 
 @pytest.fixture
 def sample_quiz(request: FixtureRequest) -> QuizBrain:

@@ -39,8 +39,8 @@ class QuizPresenter:
         self.current_question = self.quiz.next_question()
         self.current_user_choices = self.multiple_choice_dict()
     
-    def still_has_questions(self) -> bool:
-        return self.quiz.still_has_questions()
+    def nb_questions_remaining(self) -> int:
+        return self.quiz.nb_questions_remaining()
     
     def post_question_update(self, result: bool) -> None:
         if result:

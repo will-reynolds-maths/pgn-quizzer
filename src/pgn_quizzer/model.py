@@ -29,8 +29,8 @@ class QuizBrain:
             Advances question counter by 1.
         increment_score():
             Increases user score by 1.
-        still_has_questions():
-            Checks if more questions remain.
+        nb_questions_remaining():
+            Returns number of questions remaining.
         multiple_choice_options(question: Question):
             Returns list of answer options for given question.
 
@@ -40,7 +40,7 @@ class QuizBrain:
         questions (list of Question): Fixed set of questions sampled at instantiation.
     """
 
-    def __init__(self, question_bank: list[Question], nb_questions: int = 5):
+    def __init__(self, question_bank: list[Question], length: int = 5):
         """
         Initialize the quiz with a set of questions and desired length.
 
@@ -49,26 +49,26 @@ class QuizBrain:
 
         Args:
             question_bank (list[Question]): List of available questions.
-            nb_questions (int): Desired number of questions in the quiz.
+            length (int): Desired number of questions in the quiz.
 
         Raises:
-            ValueError: If `question_bank` is empty or if `nb_questions` is non-positive.
-            TypeError: If `nb_questions` is not of type int.
+            ValueError: If `question_bank` is empty or if `length` is non-positive.
+            TypeError: If `length` is not of type int.
         """
 
         if question_bank == []:
             raise ValueError("No questions provided. "
                              "Argument question_bank should be non-empty.")
-        if nb_questions <= 0:
+        if length <= 0:
             raise ValueError("No questions requested. "
                              "Argument nb_questions should be positive.")
-        if not isinstance(nb_questions, int):
+        if not isinstance(length, int):
             raise TypeError("Non-integer number of questions requested. "
                             "Argument nb_questions must have type int.")
         self.nb_questions_answered = 0
         self.user_score = 0
-        nb_questions = min(nb_questions, len(question_bank))
-        self.questions = sample(question_bank, nb_questions) # randomization
+        self.length = min(length, len(question_bank))
+        self.questions = sample(question_bank, length) # randomization
 
     def current_question_number(self) -> int:
         return 1 + self.nb_questions_answered
@@ -82,8 +82,8 @@ class QuizBrain:
     def increment_score(self) -> None:
         self.user_score += 1
     
-    def still_has_questions(self) -> bool:
-        return self.nb_questions_answered < len(self.questions)
+    def nb_questions_remaining(self) -> int:
+        return self.length - self.nb_questions_answered
     
     def generate_multiple_choice_options(self, question: Question) -> list[str]:
         '''

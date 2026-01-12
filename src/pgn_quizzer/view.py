@@ -1,9 +1,7 @@
 from pgn_quizzer.presenter import QuizPresenter
 from chess import Board
 
-def run_quiz_gui(presenter: QuizPresenter,
-                 nb_questions: int
-                 ) -> None:
+def run_quiz_gui(presenter: QuizPresenter) -> None:
     """
     Coordinator function which runs the quiz in a graphical user interface.
 
@@ -26,7 +24,6 @@ def run_quiz_gui(presenter: QuizPresenter,
     raise Exception
 
 def run_quiz_console(presenter: QuizPresenter,
-                     nb_questions: int,
                      input_func = input, # abstraction for testing
                      output_func = print
                      ) -> None:
@@ -34,25 +31,22 @@ def run_quiz_console(presenter: QuizPresenter,
     Coordinator function which runs the quiz in a console (text-based) interface.
 
     Prints formatted data to the console and collects input. All checking of
-    answers, tracking of score, and data formatting is handled by `presenter`. The
-    number of questions shown is controlled by `nb_questions`.
+    answers, tracking of score, and data formatting is handled by `presenter`.
 
     Intended as a fallback interface for testing and debugging core quiz logic.
 
     Parameters:
         presenter (QuizPresenter):
             Interfaces with the model, tells the view what to display.
-        nb_questions (int):
-            The number of questions to ask in the current quiz session.
 
     Returns:
         True if the user wants to play again, False otherwise.
     """
 
-    output_func(f"Welcome to the quiz! You'll be asked {nb_questions} questions.")
+    output_func(f"Welcome to the quiz! You'll be asked {presenter.nb_questions_remaining()} questions.")
     output_func("")
 
-    while presenter.still_has_questions():
+    while presenter.nb_questions_remaining():
         # confirm user still wants to play
         user_confirmation = input_func("Continue? [Y/n] ")
         if user_confirmation.lower() == "n":
@@ -97,9 +91,11 @@ def run_quiz_console(presenter: QuizPresenter,
         else:
             output_func(f"Incorrect. The correct answer was {presenter.right_answer()}.")
 
+        # update score and number of questions answered
         presenter.post_question_update(result)
-
-        if presenter.still_has_questions():
+        
+        # inform user
+        if presenter.nb_questions_remaining():
             output_func(f"Your current score is: {presenter.user_score()}/{presenter.nb_questions_answered()}.")
             output_func("")
 

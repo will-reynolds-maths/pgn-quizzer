@@ -27,7 +27,7 @@ def test_console_view_basic_checks(sample_console_presenter):
     dummy_inputs_list = ["", "?", "A", "y", "b", "n", "hello"]
     dummy_input = make_input_provider(dummy_inputs_list)
     output_list = make_output_collector()
-    run_quiz_console(sample_console_presenter, 5, dummy_input, print)
+    run_quiz_console(sample_console_presenter, dummy_input, print)
     # assert [bool(s) for s in output_list].count(False) == 19
     assert dummy_input("") == "hello"
 
@@ -40,7 +40,7 @@ def test_console_view_output_checks(sample_console_presenter):
     dummy_inputs_list = ["", "?", "A", "y", "b", "n", "hello"]
     dummy_input = make_input_provider(dummy_inputs_list)
     fake_print, collected = make_output_collector()
-    run_quiz_console(sample_console_presenter, 5, dummy_input, fake_print)
+    run_quiz_console(sample_console_presenter, dummy_input, fake_print)
     # TODO: figure out what collected is supposed to contain and then test it
     # or mock sample_console_presenter.still_has_questions() and count the
     # number of times it is used?
