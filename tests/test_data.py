@@ -29,7 +29,7 @@ def test_skip_invalid_data_when_right_answer_trivial(sample_question):
                        "wrong_answers": ["False"],
                        "assets": []
                     }]
-    result = loader.load_questions_from_data(dummy_data)
+    result = loader.parse_data(dummy_data)
     assert result == [sample_question]
 
 def test_skip_invalid_data_when_wrong_answers_empty(sample_question):
@@ -51,7 +51,7 @@ def test_skip_invalid_data_when_wrong_answers_empty(sample_question):
                        "wrong_answers": [],
                        "assets": []
                     }]
-    result = loader.load_questions_from_data(dummy_data)
+    result = loader.parse_data(dummy_data)
     assert result == [sample_question]
 
 def test_skip_invalid_data_when_wrong_answers_contains_trivial_string(sample_question):
@@ -73,7 +73,7 @@ def test_skip_invalid_data_when_wrong_answers_contains_trivial_string(sample_que
                        "wrong_answers": ["False", ""],
                        "assets": []
                     }]
-    result = loader.load_questions_from_data(dummy_data)
+    result = loader.parse_data(dummy_data)
     assert result == [sample_question]
 
 def test_skip_invalid_data_when_text_not_a_string(sample_question):
@@ -95,7 +95,7 @@ def test_skip_invalid_data_when_text_not_a_string(sample_question):
                        "wrong_answers": ["False"],
                        "assets": []
                     }]
-    result = loader.load_questions_from_data(dummy_data)
+    result = loader.parse_data(dummy_data)
     assert result == [sample_question]
 
 def test_skip_invalid_data_when_right_answer_not_a_string(sample_question):
@@ -117,7 +117,7 @@ def test_skip_invalid_data_when_right_answer_not_a_string(sample_question):
                        "wrong_answers": ["False"],
                        "assets": []
                     }]
-    result = loader.load_questions_from_data(dummy_data)
+    result = loader.parse_data(dummy_data)
     assert result == [sample_question]
 
 def test_skip_invalid_data_when_wrong_answers_not_a_list(sample_question):
@@ -139,7 +139,7 @@ def test_skip_invalid_data_when_wrong_answers_not_a_list(sample_question):
                        "wrong_answers": False,
                        "assets": []
                     }]
-    result = loader.load_questions_from_data(dummy_data)
+    result = loader.parse_data(dummy_data)
     assert result == [sample_question]
 
 def test_skip_invalid_data_when_wrong_answers_list_contains_non_string(sample_question):
@@ -161,7 +161,7 @@ def test_skip_invalid_data_when_wrong_answers_list_contains_non_string(sample_qu
                        "wrong_answers": [False],
                        "assets": []
                     }]
-    result = loader.load_questions_from_data(dummy_data)
+    result = loader.parse_data(dummy_data)
     assert result == [sample_question]
 
 def test_skip_invalid_data_when_assets_not_a_list(sample_question):
@@ -183,7 +183,7 @@ def test_skip_invalid_data_when_assets_not_a_list(sample_question):
                        "wrong_answers": [],
                        "assets": "8/8/8/8/8/8/8/8 w - - 0 1"
                     }]
-    result = loader.load_questions_from_data(dummy_data)
+    result = loader.parse_data(dummy_data)
     assert result == [sample_question]
 
 def test_skip_invalid_data_when_assets_list_contains_non_string(sample_question):
@@ -205,5 +205,5 @@ def test_skip_invalid_data_when_assets_list_contains_non_string(sample_question)
                        "wrong_answers": [],
                        "assets": [0]
                     }]
-    result = loader.load_questions_from_data(dummy_data)
+    result = loader.parse_data(dummy_data)
     assert result == [sample_question]

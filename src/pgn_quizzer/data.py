@@ -114,7 +114,11 @@ def pgn_to_json(path: str, nb_options=3) -> str:
     
     return dumps(json_array_list)
 
-def load_data_from_pgn(path: Path, nb_options=3) -> list[dict]:
+#-------------------------
+# Quiz Data Processing
+#-------------------------
+
+def pgn_loader(path: Path, nb_options=3) -> list[dict]:
     if nb_options > 6:
         raise ValueError("More than 6 options is too many! "
                          "Choose a number of options less than 7.")
@@ -130,17 +134,13 @@ def load_data_from_pgn(path: Path, nb_options=3) -> list[dict]:
     
     return question_data
 
-#-------------------------
-# Quiz Data Processing
-#-------------------------
-
-def load_data_from_json(path: Path) -> list[dict]:
+def json_loader(path: Path) -> list[dict]:
     '''Validated at runtime.'''
     with open(path, mode='r') as json:
         question_data = load(json)
     return question_data
 
-def validate_data(q: dict) -> bool:
+def is_valid_data(q: dict) -> bool:
     # the data must be of the correct types
     if not isinstance(q["text"], str):
         return False
@@ -161,18 +161,21 @@ def validate_data(q: dict) -> bool:
     choices = [q["right_answer"]] + q["wrong_answers"]
     wrong_answers_exist = bool(q["wrong_answers"])
     no_trivial_answers = all(choices)
-    return wrong_answers_exist and no_trivial_answers
+    valid = wrong_answers_exist and no_trivial_answers
 
-def load_questions_from_data(question_data: list[dict]) -> list[Question]:
+    return valid
+
+def parse_data(question_data: list[dict]) -> list[Question]:
     '''Generates list of Question objects from question data; invalid data
     is ignored (skipped over).'''
 
-    valid_data = filter(validate_data, question_data)
+    valid_data = filter(is_valid_data, question_data)
     return [Question(text          = q["text"],
                      right_answer  = q["right_answer"],
                      wrong_answers = q["wrong_answers"],
                      assets        = q["assets"])
-                     for q in valid_data]
+            for q in valid_data
+            ]
 
 #-------------------------
 # Create Question Bank
@@ -180,20 +183,23 @@ def load_questions_from_data(question_data: list[dict]) -> list[Question]:
 
 def create_question_bank(source_path: Path) -> list[Question]:
     file_type = source_path.suffix
-    if file_type == ".json":
-        data_loader = load_data_from_json
-    elif file_type == ".pgn":
-        data_loader = load_data_from_pgn
-    else:
+    loader_dict = {
+        ".json": json_loader,
+        ".pgn": pgn_loader
+    }
+    loader = loader_dict.get(file_type)
+
+    # validation
+    if not loader:
         raise SystemExit(
-            f"Error loading PGN or JSON from {source_path}"
+            f"--error: problem loading PGN or JSON from {source_path}"
         )
     
     try:
-            data = data_loader(source_path)
+            data = loader(source_path)
     except (FileNotFoundError, ValueError) as e:
         raise SystemExit(
             f"--error: unable to find {file_type} at {source_path}: {e}"
-            )
+        )
     else:
-        return load_questions_from_data(data)
+        return parse_data(data)
