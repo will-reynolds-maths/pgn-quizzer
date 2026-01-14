@@ -12,10 +12,9 @@ class QuizPresenter:
         return dict(zip("ABCDEF", user_choices_list))
     
     def is_correct(self, user_answer_key: str) -> bool | None:
-        try:
-            key = user_answer_key.upper()
-            user_answer = self.current_user_choices[key]
-        except KeyError:
+        key = user_answer_key.upper()
+        user_answer = self.current_user_choices.get(key)
+        if user_answer is None:
             return None
         else:
             return user_answer == self.current_question.right_answer
