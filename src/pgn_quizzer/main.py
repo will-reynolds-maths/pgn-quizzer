@@ -11,7 +11,7 @@ def is_int_in_range(value: str) -> int:
     try:
         ivalue = int(value)
     except ValueError:
-        raise ArgumentTypeError(f"{value!r} is not a valid integer")
+        raise ArgumentTypeError(f"{repr(value)} is not a valid integer")
 
     if not (1 <= ivalue <= 101):
         raise ArgumentTypeError(f"{ivalue} is out of allowed range [1, 101]")
@@ -52,21 +52,30 @@ def parse_args() -> Namespace:
 
 
 def main():
+    # -------------------------
+    # Setup:
+    # -------------------------
     args = parse_args()
     given_path = args.path
     length = args.length
     ui = args.ui
 
+    # -------------------------
     # Create question bank
+    # -------------------------
     source_string = given_path or "./jsons/chess_sample_data.json"
     source_path = Path(source_string)
     question_bank = create_question_bank(source_path)
 
-    # Create quiz and presenter:
+    # -------------------------
+    # Create quiz & presenter
+    # -------------------------
     quiz = QuizBrain(question_bank, length)
     presenter = QuizPresenter(quiz)
 
-    # Dispatch to chosen UI:
+    # -------------------------
+    # Dispatch to chosen UI
+    # -------------------------
     if ui == "console":
         while run_quiz_console(presenter):
             # new quiz instance means new randomization, same question bank
@@ -81,6 +90,10 @@ def main():
             raise SystemExit(
                 "--error: GUI not implemented yet."
             )
+    
+    # -------------------------
+    # End of main
+    # -------------------------
 
 if __name__ == "__main__":
     main()
