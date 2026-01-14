@@ -1,5 +1,6 @@
-from pgn_quizzer.presenter import QuizPresenter
 from chess import Board
+
+from pgn_quizzer.presenter import QuizPresenter
 
 def run_quiz_gui(presenter: QuizPresenter) -> None:
     """
@@ -7,15 +8,13 @@ def run_quiz_gui(presenter: QuizPresenter) -> None:
 
     Prints formatted data to the screen and collects input. All checking of
     answers, tracking of score, and data formatting is handled by the
-    presenter. The number of questions shown is controlled by `nb_questions`.
+    presenter.
 
     Intended to be the default user interface.
 
     Parameters:
         presenter (QuizPresenter): 
             Interfaces with the model, tells the view what to display.
-        nb_questions (int):
-            The number of questions to ask in the current quiz session.
 
     Returns:
         bool: True if the user wants to play again, False otherwise.

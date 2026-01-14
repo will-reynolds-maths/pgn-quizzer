@@ -1,5 +1,6 @@
 from argparse import ArgumentParser, ArgumentTypeError, Namespace
 from pathlib import Path
+
 from pgn_quizzer.data import create_question_bank
 from pgn_quizzer.model import QuizBrain
 from pgn_quizzer.presenter import QuizPresenter
@@ -20,7 +21,6 @@ def is_int_in_range(value: str) -> int:
 def parse_args() -> Namespace:
     """
     Set up and parse command-line flags, seeking:
-      --source: either 'json' or 'pgn'
       --path:   path to the JSON or PGN file
       --ui:     either 'console' or 'gui'
       --num:    number of questions to ask (default = 5)
