@@ -1,6 +1,6 @@
 *
 !/src/
-!lucidriver/
+!pgn_quizzer/
 !/tests
 !/jsons
 !*.py
