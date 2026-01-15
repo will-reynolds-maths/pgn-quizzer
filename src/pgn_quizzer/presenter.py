@@ -4,7 +4,7 @@ from pgn_quizzer.model import QuizBrain
 class QuizPresenter:
     def __init__(self, quiz: QuizBrain):
         self.quiz: QuizBrain = quiz
-        self.current_question: Question = Question("", "", [], [])
+        self.current_question: Question = Question("", "", [], "")
         self.current_user_choices: dict[str, str] = {"": ""}
     
     def multiple_choice_dict(self) -> dict[str, str]:
@@ -31,8 +31,8 @@ class QuizPresenter:
     def right_answer(self) -> str:
         return self.current_question.right_answer
     
-    def question_assets(self) -> list:
-        return self.current_question.assets
+    def question_asset(self) -> str:
+        return self.current_question.asset
 
     def cue_next_question(self) -> None:
         self.current_question = self.quiz.next_question()

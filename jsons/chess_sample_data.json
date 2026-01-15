@@ -3,174 +3,174 @@
         "text": "Which game is the following position from?",
         "right_answer": "Steinitz - Lipke, Vienna 1898",
         "wrong_answers": ["Janowski - Capablanca, New York 1916", "Lasker - Capablanca, St. Petersburg 1914"],
-        "assets": ["8/1b2kp1p/1p4p1/pB1pr3/3Rn3/2N1P3/PP3PPP/6K1 w - - 9 32"]
+        "asset": "8/1b2kp1p/1p4p1/pB1pr3/3Rn3/2N1P3/PP3PPP/6K1 w - - 9 32"
     },
     {
         "text": "Which game is the following position from?",
         "right_answer": "Steinitz - Lipke, Vienna 1898",
         "wrong_answers": ["Janowski - Capablanca, New York 1916", "Lasker - Capablanca, St. Petersburg 1914"],
-        "assets": ["8/4r3/1pbk1np1/p2p1p1p/3R4/2N1PP1P/PP2BKP1/8 w - - 0 38"]
+        "asset": "8/4r3/1pbk1np1/p2p1p1p/3R4/2N1PP1P/PP2BKP1/8 w - - 0 38"
     },
     {
         "text": "Which game is the following position from?",
         "right_answer": "Steinitz - Lipke, Vienna 1898",
         "wrong_answers": ["Janowski - Capablanca, New York 1916", "Lasker - Capablanca, St. Petersburg 1914"],
-        "assets": ["4n3/4r3/1pb3p1/p1kp1p1p/3R3P/2N1PP2/PP3KP1/3B4 w - - 3 40"]
+        "asset": "4n3/4r3/1pb3p1/p1kp1p1p/3R3P/2N1PP2/PP3KP1/3B4 w - - 3 40"
     },
     {
         "text": "Which game is the following position from?",
         "right_answer": "Steinitz - Lipke, Vienna 1898",
         "wrong_answers": ["Janowski - Capablanca, New York 1916", "Lasker - Capablanca, St. Petersburg 1914"],
-        "assets": ["4b3/2n1r3/6p1/ppkp1p1p/3R1N1P/P3PP2/1P3KP1/3B4 w - - 0 43"]
+        "asset": "4b3/2n1r3/6p1/ppkp1p1p/3R1N1P/P3PP2/1P3KP1/3B4 w - - 0 43"
     },
     {
         "text": "Which game is the following position from?",
         "right_answer": "Steinitz - Lipke, Vienna 1898",
         "wrong_answers": ["Janowski - Capablanca, New York 1916", "Lasker - Capablanca, St. Petersburg 1914"],
-        "assets": ["n3b3/1k6/3r2p1/1p1p1p1p/1P1N3P/1B2PP2/5KP1/3R4 w - - 13 51"]
+        "asset": "n3b3/1k6/3r2p1/1p1p1p1p/1P1N3P/1B2PP2/5KP1/3R4 w - - 13 51"
     },
     {
         "text": "Which game is the following position from?",
         "right_answer": "Steinitz - Lipke, Vienna 1898",
         "wrong_answers": ["Janowski - Capablanca, New York 1916", "Lasker - Capablanca, St. Petersburg 1914"],
-        "assets": ["8/1knb4/3r2p1/1pRp1p1p/1P1N3P/1B2PP2/5KP1/8 w - - 17 53"]
+        "asset": "8/1knb4/3r2p1/1pRp1p1p/1P1N3P/1B2PP2/5KP1/8 w - - 17 53"
     },
     {
         "text": "Which game is the following position from?",
         "right_answer": "Janowski - Capablanca, New York 1916",
         "wrong_answers": ["Steinitz - Lipke, Vienna 1898", "Anderssen - Minkowitz, Baden-Baden 1870"],
-        "assets": ["r3kb1r/1p2pppp/1pn5/3p1b2/3P4/4PN2/PP1B1PPP/R3KB1R b KQkq - 2 10"]
+        "asset": "r3kb1r/1p2pppp/1pn5/3p1b2/3P4/4PN2/PP1B1PPP/R3KB1R b KQkq - 2 10"
     },
     {
         "text": "Which game is the following position from?",
         "right_answer": "Janowski - Capablanca, New York 1916",
         "wrong_answers": ["Steinitz - Lipke, Vienna 1898", "Anderssen - Minkowitz, Baden-Baden 1870"],
-        "assets": ["r1r5/1p1bk1pp/1p1bp3/n2p1p2/3P4/P1B1P1P1/1P1NBP1P/R1R3K1 b - - 0 17"]
+        "asset": "r1r5/1p1bk1pp/1p1bp3/n2p1p2/3P4/P1B1P1P1/1P1NBP1P/R1R3K1 b - - 0 17"
     },
     {
         "text": "Which game is the following position from?",
         "right_answer": "Janowski - Capablanca, New York 1916",
         "wrong_answers": ["Steinitz - Lipke, Vienna 1898", "Anderssen - Minkowitz, Baden-Baden 1870"],
-        "assets": ["r7/3bbkpp/4p3/1p1pPp2/r1pP1P2/P1B1K1P1/1P1N3P/1RR5 b - - 5 25"]
+        "asset": "r7/3bbkpp/4p3/1p1pPp2/r1pP1P2/P1B1K1P1/1P1N3P/1RR5 b - - 5 25"
     },
     {
         "text": "Which game is the following position from?",
         "right_answer": "Janowski - Capablanca, New York 1916",
         "wrong_answers": ["Steinitz - Lipke, Vienna 1898", "Anderssen - Minkowitz, Baden-Baden 1870"],
-        "assets": ["r5r1/3bbk2/4p2p/1p1pPp2/2pP1P2/P1B2K2/1P4NP/1RR5 b - - 2 30"]
+        "asset": "r5r1/3bbk2/4p2p/1p1pPp2/2pP1P2/P1B2K2/1P4NP/1RR5 b - - 2 30"
     },
     {
         "text": "Which game is the following position from?",
         "right_answer": "Janowski - Capablanca, New York 1916",
         "wrong_answers": ["Steinitz - Lipke, Vienna 1898", "Anderssen - Minkowitz, Baden-Baden 1870"],
-        "assets": ["6r1/3bbk2/4p2p/1p1pPp2/2pP1Pr1/P4K2/1P4NP/1R2B1R1 b - - 6 32"]
+        "asset": "6r1/3bbk2/4p2p/1p1pPp2/2pP1Pr1/P4K2/1P4NP/1R2B1R1 b - - 6 32"
     },
     {
         "text": "Which game is the following position from?",
         "right_answer": "Janowski - Capablanca, New York 1916",
         "wrong_answers": ["Steinitz - Lipke, Vienna 1898", "Anderssen - Minkowitz, Baden-Baden 1870"],
-        "assets": ["6r1/4bk2/4p2p/3pPp2/1PpPbPr1/6B1/1P3KNP/R5R1 b - - 6 36"]
+        "asset": "6r1/4bk2/4p2p/3pPp2/1PpPbPr1/6B1/1P3KNP/R5R1 b - - 6 36"
     },
     {
         "text": "Which game does the following position remind you of?",
         "right_answer": "Janowski - Capablanca, New York 1916",
         "wrong_answers": ["Steinitz - Lipke, Vienna 1898", "Anderssen - Minkowitz, Baden-Baden 1870"],
-        "assets": ["r3k2r/1p1nbppp/p3pn2/3p4/N2P4/1PBBP3/1P2KPPP/R6R w HAkq - 0 1"]
+        "asset": "r3k2r/1p1nbppp/p3pn2/3p4/N2P4/1PBBP3/1P2KPPP/R6R w HAkq - 0 1"
     },
     {
         "text": "Which game does the following position remind you of?",
         "right_answer": "Janowski - Capablanca, New York 1916",
         "wrong_answers": ["Steinitz - Lipke, Vienna 1898", "Anderssen - Minkowitz, Baden-Baden 1870"],
-        "assets": ["1r3kr1/1p4np/p1b5/3p1p2/1P1PpP2/1P2P2P/4BKR1/2B3R1 w - - 0 1"]
+        "asset": "1r3kr1/1p4np/p1b5/3p1p2/1P1PpP2/1P2P2P/4BKR1/2B3R1 w - - 0 1"
     },
     {
         "text": "Which game is the following position from?",
         "right_answer": "Lasker - Capablanca, St. Petersburg 1914",
         "wrong_answers": ["Steinitz - Lipke, Vienna 1898", "Janowski - Capablanca, New York 1916"],
-        "assets": ["r1b1r1k1/1pp1n1pp/p1pb1p2/8/4PP2/1NN5/PPP3PP/R1B2RK1 w - - 0 12"]
+        "asset": "r1b1r1k1/1pp1n1pp/p1pb1p2/8/4PP2/1NN5/PPP3PP/R1B2RK1 w - - 0 12"
     },
     {
         "text": "Which game is the following position from?",
         "right_answer": "Lasker - Capablanca, St. Petersburg 1914",
         "wrong_answers": ["Steinitz - Lipke, Vienna 1898", "Janowski - Capablanca, New York 1916"],
-        "assets": ["2n1r1k1/1b2r1pp/p1ppNp2/1p3P2/4P3/2N5/PPPR2PP/3R2K1 w - - 2 20"]
+        "asset": "2n1r1k1/1b2r1pp/p1ppNp2/1p3P2/4P3/2N5/PPPR2PP/3R2K1 w - - 2 20"
     },
     {
         "text": "Which game is the following position from?",
         "right_answer": "Lasker - Capablanca, St. Petersburg 1914",
         "wrong_answers": ["Steinitz - Lipke, Vienna 1898", "Janowski - Capablanca, New York 1916"],
-        "assets": ["b1n1r3/r4kpp/p1ppNp2/1p3P2/1P2P3/P1N5/2PR1KPP/3R4 w - - 3 23"]
+        "asset": "b1n1r3/r4kpp/p1ppNp2/1p3P2/1P2P3/P1N5/2PR1KPP/3R4 w - - 3 23"
     },
     {
         "text": "Which game is the following position from?",
         "right_answer": "Lasker - Capablanca, St. Petersburg 1914",
         "wrong_answers": ["Steinitz - Lipke, Vienna 1898", "Janowski - Capablanca, New York 1916"],
-        "assets": ["4k1r1/1b1r4/1nppNp2/1p3Pp1/1P2P1P1/2N3KR/2P5/7R w - - 6 35"]
+        "asset": "4k1r1/1b1r4/1nppNp2/1p3Pp1/1P2P1P1/2N3KR/2P5/7R w - - 6 35"
     },
     {
         "text": "Which game does the following position remind you of?",
         "right_answer": "Lasker - Capablanca, St. Petersburg 1914",
         "wrong_answers": ["Steinitz - Lipke, Vienna 1898", "Janowski - Capablanca, New York 1916"],
-        "assets": ["1kr4r/pp1bn1p1/3p3p/3Ppp2/7P/P1P2P2/1PB3P1/1KBR3R b Kk - 0 1"]
+        "asset": "1kr4r/pp1bn1p1/3p3p/3Ppp2/7P/P1P2P2/1PB3P1/1KBR3R b Kk - 0 1"
     },
     {
         "text": "Which game does the following position remind you of?",
         "right_answer": "Lasker - Capablanca, St. Petersburg 1914",
         "wrong_answers": ["Steinitz - Lipke, Vienna 1898", "Janowski - Capablanca, New York 1916"],
-        "assets": ["6r1/1p1k4/1n1b4/p2p1p1p/P3pP1P/1PP1P3/1B3N1K/2R5 b - - 0 1"]
+        "asset": "6r1/1p1k4/1n1b4/p2p1p1p/P3pP1P/1PP1P3/1B3N1K/2R5 b - - 0 1"
     },
     {
         "text": "Which game is the following position from?",
         "right_answer": "Anderssen - Minkowitz, Baden-Baden 1870",
         "wrong_answers": ["Janowski - Capablanca, New York 1916", "Lasker - Capablanca, St. Petersburg 1914"],
-        "assets": ["r6r/2p1n1pp/2bpkp2/P1p5/4P3/2N1BP2/2P3PP/R2R2K1 w - - 3 21"]
+        "asset": "r6r/2p1n1pp/2bpkp2/P1p5/4P3/2N1BP2/2P3PP/R2R2K1 w - - 3 21"
     },
     {
         "text": "Which game is the following position from?",
         "right_answer": "Anderssen - Minkowitz, Baden-Baden 1870",
         "wrong_answers": ["Janowski - Capablanca, New York 1916", "Lasker - Capablanca, St. Petersburg 1914"],
-        "assets": ["1r6/r1p2kpp/2bp1p2/P1p1n2N/4P3/2B2P2/2P2KPP/R1R5 w - - 17 28"]
+        "asset": "1r6/r1p2kpp/2bp1p2/P1p1n2N/4P3/2B2P2/2P2KPP/R1R5 w - - 17 28"
     },
     {
         "text": "Which game is the following position from?",
         "right_answer": "Anderssen - Minkowitz, Baden-Baden 1870",
         "wrong_answers": ["Janowski - Capablanca, New York 1916", "Lasker - Capablanca, St. Petersburg 1914"],
-        "assets": ["6rr/2p2kp1/2bp1p1p/P1p5/2n1PNPP/2B2P2/2P2KR1/R7 w - - 5 33"]
+        "asset": "6rr/2p2kp1/2bp1p1p/P1p5/2n1PNPP/2B2P2/2P2KR1/R7 w - - 5 33"
     },
     {
         "text": "Which game is the following position from?",
         "right_answer": "Anderssen - Minkowitz, Baden-Baden 1870",
         "wrong_answers": ["Janowski - Capablanca, New York 1916", "Lasker - Capablanca, St. Petersburg 1914"],
-        "assets": ["b5rr/P1pn1kp1/3p1p1p/2p5/4PNPP/2B2P2/2P2KR1/6R1 w - - 3 36"]
+        "asset": "b5rr/P1pn1kp1/3p1p1p/2p5/4PNPP/2B2P2/2P2KR1/6R1 w - - 3 36"
     },
     {
         "text": "Which game does the following position remind you of?",
         "right_answer": "Anderssen - Minkowitz, Baden-Baden 1870",
         "wrong_answers": ["Janowski - Capablanca, New York 1916", "Lasker - Capablanca, St. Petersburg 1914"],
-        "assets": ["7r/1p1kbpn1/p1p1p1r1/5p2/P2P3p/1NP2B1P/1PK2PP1/1R2R3 w - - 0 1"]
+        "asset": "7r/1p1kbpn1/p1p1p1r1/5p2/P2P3p/1NP2B1P/1PK2PP1/1R2R3 w - - 0 1"
     },
     {
         "text": "Which game does the following position remind you of?",
         "right_answer": "Anderssen - Minkowitz, Baden-Baden 1870",
         "wrong_answers": ["Janowski - Capablanca, New York 1916", "Lasker - Capablanca, St. Petersburg 1914"],
-        "assets": ["r4rk1/1p1nbppp/2pp2n1/4p3/2P5/1NNPP1P1/1P3PBP/R4RK1 w Qq - 0 1"]
+        "asset": "r4rk1/1p1nbppp/2pp2n1/4p3/2P5/1NNPP1P1/1P3PBP/R4RK1 w Qq - 0 1"
     },
     {
         "text": "Which game is the following position from?",
         "right_answer": "Richter - Tarrasch, Nuremberg 1888",
         "wrong_answers": ["Janowski - Capablanca, New York 1916", "Lasker - Capablanca, St. Petersburg 1914"],
-        "assets": ["r7/p4k2/3bb1r1/1pp2pp1/3p3p/PN1P1P2/1PPNR1PP/4R1K1 b - - 7 36"]
+        "asset": "r7/p4k2/3bb1r1/1pp2pp1/3p3p/PN1P1P2/1PPNR1PP/4R1K1 b - - 7 36"
     },
     {
         "text": "Which game is the following position from?",
         "right_answer": "Richter - Tarrasch, Nuremberg 1888",
         "wrong_answers": ["Janowski - Capablanca, New York 1916", "Lasker - Capablanca, St. Petersburg 1914"],
-        "assets": ["2r5/5k2/3bb1r1/1p3pp1/p1pp3p/P2P1P2/1PP1R1PP/1N2RN1K b - - 3 40"]
+        "asset": "2r5/5k2/3bb1r1/1p3pp1/p1pp3p/P2P1P2/1PP1R1PP/1N2RN1K b - - 3 40"
     },
     {
         "text": "Which game does the following position remind you of?",
         "right_answer": "Richter - Tarrasch, Nuremberg 1888",
         "wrong_answers": ["Janowski - Capablanca, New York 1916", "Lasker - Capablanca, St. Petersburg 1914"],
-        "assets": ["2r5/p2b1k2/3b2r1/1ppR1ppp/3p4/PN1P1P2/1PPN2PP/4R1K1 w - - 4 31"]
+        "asset": "2r5/p2b1k2/3b2r1/1ppR1ppp/3p4/PN1P1P2/1PPN2PP/4R1K1 w - - 4 31"
     }
 ]

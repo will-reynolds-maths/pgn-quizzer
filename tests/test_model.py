@@ -17,7 +17,7 @@ def sample_quiz_empty_bank_one_question():
 def sample_quiz_one_question():
     # Create a single‐question quiz with a known FEN
     fen = "8/8/8/8/8/8/8/8 w - - 0 1"
-    q = Question("Dummy Q", "A", ["B","C","D"], [fen])
+    q = Question("Dummy Q", "A", ["B","C","D"], fen)
     return QuizBrain([q], length=1)
 
 def sample_quiz_sample_json_zero_questions():

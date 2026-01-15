@@ -9,7 +9,7 @@ class Question:
     text: str
     right_answer: str
     wrong_answers: list[str]
-    assets: list[str]
+    asset: str
 
 class QuizBrain:
     """

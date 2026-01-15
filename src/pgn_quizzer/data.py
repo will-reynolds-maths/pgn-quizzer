@@ -154,17 +154,15 @@ def json_loader(path: Path) -> list[dict]:
 
 def is_valid_data(q: dict) -> bool:
     # the data values must be of the correct types
-    if not isinstance(q["text"], str):
+    if not isinstance(q.get("text"), str):
         return False
-    elif not isinstance(q["right_answer"], str):
+    elif not isinstance(q.get("right_answer"), str):
         return False
-    elif not isinstance(q["wrong_answers"], list):
+    elif not isinstance(q.get("wrong_answers"), list):
         return False
-    elif not isinstance(q["assets"], list):
+    elif not isinstance(q.get("asset"), str):
         return False
     elif not all([isinstance(a, str) for a in q["wrong_answers"]]):
-        return False
-    elif not all([isinstance(a, str) for a in q["assets"]]):
         return False
     
     # this is a multiple choice quiz
@@ -186,7 +184,7 @@ def parse_data(question_data: list[dict]) -> list[Question]:
     return [Question(text          = q["text"],
                      right_answer  = q["right_answer"],
                      wrong_answers = q["wrong_answers"],
-                     assets        = q["assets"])
+                     asset         = q["asset"])
             for q in valid_data
             ]
 

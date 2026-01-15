@@ -8,7 +8,7 @@ def sample_question() -> Question:
     return Question(text          = "",
                     right_answer  = "True",
                     wrong_answers = ["False"],
-                    assets        = [])
+                    asset        = "")
 
 def test_skip_invalid_data_when_right_answer_trivial(sample_question):
     """
@@ -21,13 +21,13 @@ def test_skip_invalid_data_when_right_answer_trivial(sample_question):
                        "text": "",
                        "right_answer": "True",
                        "wrong_answers": ["False"],
-                       "assets": []
+                       "asset": ""
                    },
                    { # right_answer trivial string
                        "text": "",
                        "right_answer": "",
                        "wrong_answers": ["False"],
-                       "assets": []
+                       "asset": ""
                     }]
     result = loader.parse_data(dummy_data)
     assert result == [sample_question]
@@ -43,13 +43,13 @@ def test_skip_invalid_data_when_wrong_answers_empty(sample_question):
                        "text": "",
                        "right_answer": "True",
                        "wrong_answers": ["False"],
-                       "assets": []
+                       "asset": ""
                    },
                    { # wrong_answers empty
                        "text": "",
                        "right_answer": "True",
                        "wrong_answers": [],
-                       "assets": []
+                       "asset": ""
                     }]
     result = loader.parse_data(dummy_data)
     assert result == [sample_question]
@@ -65,13 +65,13 @@ def test_skip_invalid_data_when_wrong_answers_contains_trivial_string(sample_que
                        "text": "",
                        "right_answer": "True",
                        "wrong_answers": ["False"],
-                       "assets": []
+                       "asset": ""
                    },
                    { # wrong_answers contains a trivial string
                        "text": "",
                        "right_answer": "True",
                        "wrong_answers": ["False", ""],
-                       "assets": []
+                       "asset": ""
                     }]
     result = loader.parse_data(dummy_data)
     assert result == [sample_question]
@@ -87,13 +87,13 @@ def test_skip_invalid_data_when_text_not_a_string(sample_question):
                        "text": "",
                        "right_answer": "True",
                        "wrong_answers": ["False"],
-                       "assets": []
+                       "asset": ""
                    },
                    { # text is not a string
                        "text": 0,
                        "right_answer": "True",
                        "wrong_answers": ["False"],
-                       "assets": []
+                       "asset": ""
                     }]
     result = loader.parse_data(dummy_data)
     assert result == [sample_question]
@@ -109,13 +109,13 @@ def test_skip_invalid_data_when_right_answer_not_a_string(sample_question):
                        "text": "",
                        "right_answer": "True",
                        "wrong_answers": ["False"],
-                       "assets": []
+                       "asset": ""
                    },
                    { # right_answer is not a string
                        "text": "",
                        "right_answer": True,
                        "wrong_answers": ["False"],
-                       "assets": []
+                       "asset": ""
                     }]
     result = loader.parse_data(dummy_data)
     assert result == [sample_question]
@@ -131,13 +131,13 @@ def test_skip_invalid_data_when_wrong_answers_not_a_list(sample_question):
                        "text": "",
                        "right_answer": "True",
                        "wrong_answers": ["False"],
-                       "assets": []
+                       "asset": ""
                    },
                    { # wrong_answers is not a list
                        "text": "",
                        "right_answer": "True",
                        "wrong_answers": False,
-                       "assets": []
+                       "asset": ""
                     }]
     result = loader.parse_data(dummy_data)
     assert result == [sample_question]
@@ -153,21 +153,21 @@ def test_skip_invalid_data_when_wrong_answers_list_contains_non_string(sample_qu
                        "text": "",
                        "right_answer": "True",
                        "wrong_answers": ["False"],
-                       "assets": []
+                       "asset": ""
                    },
                    { # wrong_answers is not a list of strings
                        "text": "",
                        "right_answer": "True",
                        "wrong_answers": [False],
-                       "assets": []
+                       "asset": ""
                     }]
     result = loader.parse_data(dummy_data)
     assert result == [sample_question]
 
-def test_skip_invalid_data_when_assets_not_a_list(sample_question):
+def test_skip_invalid_data_when_asset_not_a_string(sample_question):
     """
         Given: list of question data
-        When: item in list has "assets" value which is not a list
+        When: item in list has "asset" value which is not a string
         Then: skip that data
     """
     
@@ -175,35 +175,35 @@ def test_skip_invalid_data_when_assets_not_a_list(sample_question):
                        "text": "",
                        "right_answer": "True",
                        "wrong_answers": ["False"],
-                       "assets": []
+                       "asset": ""
                    },
-                   { # assets is not a list
+                   { # asset is not a string
                        "text": "",
                        "right_answer": "True",
                        "wrong_answers": [],
-                       "assets": "8/8/8/8/8/8/8/8 w - - 0 1"
+                       "asset": ["8/8/8/8/8/8/8/8 w - - 0 1"]
                     }]
     result = loader.parse_data(dummy_data)
     assert result == [sample_question]
 
-def test_skip_invalid_data_when_assets_list_contains_non_string(sample_question):
-    """
-        Given: list of question data
-        When: item in list has an "assets" list but it contains an entry which is not a string
-        Then: skip that data
-    """
+# def test_skip_invalid_data_when_assets_list_contains_non_string(sample_question):
+#     """
+#         Given: list of question data
+#         When: item in list has an "assets" list but it contains an entry which is not a string
+#         Then: skip that data
+#     """
     
-    dummy_data = [{ # valid data
-                       "text": "",
-                       "right_answer": "True",
-                       "wrong_answers": ["False"],
-                       "assets": []
-                   },
-                   { # assets is not a list of strings
-                       "text": "",
-                       "right_answer": "True",
-                       "wrong_answers": [],
-                       "assets": [0]
-                    }]
-    result = loader.parse_data(dummy_data)
-    assert result == [sample_question]
+#     dummy_data = [{ # valid data
+#                        "text": "",
+#                        "right_answer": "True",
+#                        "wrong_answers": ["False"],
+#                        "asset": ""
+#                    },
+#                    { # assets is not a list of strings
+#                        "text": "",
+#                        "right_answer": "True",
+#                        "wrong_answers": [],
+#                        "assets": [0]
+#                     }]
+#     result = loader.parse_data(dummy_data)
+#     assert result == [sample_question]

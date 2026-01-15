@@ -24,7 +24,7 @@ def sample_presenter_empty_bank_one_question():
 def sample_presenter_one_question():
     # Create a single‐question quiz with a known FEN
     fen = "8/8/8/8/8/8/8/8 w - - 0 1"
-    q = Question("Dummy Q", "A", ["B","C","D"], [fen])
+    q = Question("Dummy Q", "A", ["B","C","D"], fen)
     quiz = QuizBrain([q], length=1)
     presenter = QuizPresenter(quiz)
     presenter.cue_next_question()
@@ -33,7 +33,7 @@ def sample_presenter_one_question():
 def sample_presenter_two_questions():
     # Create a single‐question quiz with a known FEN
     fen = "8/8/8/8/8/8/8/8 w - - 0 1"
-    q = Question("Dummy Q", "A", ["B","C","D"], [fen])
+    q = Question("Dummy Q", "A", ["B","C","D"], fen)
     quiz = QuizBrain([q, q], length=2)
     presenter = QuizPresenter(quiz)
     presenter.cue_next_question()

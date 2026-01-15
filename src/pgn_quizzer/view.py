@@ -60,7 +60,7 @@ def run_quiz_console(presenter: QuizPresenter,
         output_func("")
         
         # print assets
-        fen, *_ = presenter.question_assets()
+        fen = presenter.question_asset()
         position = Board(fen)
         output_func(position.unicode(invert_color=True, orientation=position.turn), sep="\n\n")
         output_func("")
