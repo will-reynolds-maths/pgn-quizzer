@@ -1,6 +1,6 @@
 *
 !/src/
-!pgn_quizzer/
+!/pgn_quizzer/
 !/tests
 !/jsons
 !*.py
