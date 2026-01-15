@@ -15,7 +15,7 @@ from pgn_quizzer.model import Question
 @dataclass(frozen=False, order=False)
 class ChessGame:
     title: str
-    fen_assets: dict[str, list[str]] = field(default_factory=dict)
+    fen_assets: dict[str, str] = field(default_factory=dict)
 
 
 class ChessGameConstructor:
@@ -43,7 +43,7 @@ class ChessGameConstructor:
     def _strip_metadata(self, subpgn: str) -> str:
         ...
 
-    def _get_fens(self, subpgn: str) -> dict[str, list[str]]:
+    def _get_fens(self, subpgn: str) -> dict[str, str]:
         ...
     
     def construct(self):
@@ -59,8 +59,8 @@ class ChessGameConstructor:
             subpgn_asset_fens = self._get_fens(subpgn)
             
             game = ChessGame(
-                title=subpgn_title, 
-                fen_assets=subpgn_asset_fens
+                title      = subpgn_title, 
+                fen_assets = subpgn_asset_fens
                 )
             self.chessgames.append(game)
 
